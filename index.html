@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <link href="style.css" rel="stylesheet" type="text/css">
+    <script src="lib/jquery.js"></script>
+
+    <link href="lib/jqueryUI/themes/base/all.css"  rel="stylesheet">
+    <script src="lib/jqueryUI/jqueryUI.js"></script>
+    <!--<link href="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.css">-->
+    <!--<script src="https://cdn.bootcss.com/jqueryui/1.12.1/jquery-ui.js"></script>-->
+
+    <link href="lib/boostrap/bootstrap.css" rel="stylesheet" type="text/css">
+    <script src="lib/boostrap/bootstrap.js"></script>
+
+    <script src="lib/flatpickr/flatpickr.js"></script>
+    <link href="lib/flatpickr/flatpickr.css" rel="stylesheet" type="text/css">
+
+    <script src="lib/select2/select2.js"></script>
+    <link href="lib/select2/select2.css" rel="stylesheet" type="text/css">
+
+    <script src="lib/moment.js"></script>
+    <script src="lib/underscore.js"></script>
+    <script src="lib/laytpl.js"></script>
+    <script src="lib/layer/layer.js"></script>
+
+    <script src="js/selectableTime.js"></script>
+    <script src="main.js"></script>
+    <script>
+        $( function () {
+
+        } )
+    </script>
+    <!---->
+    <!--<script src="public/selectableTime.js"></script>-->
+
+    <!--<script src="public/index.tpl.js"></script>-->
+    <!--<script src="public/meetingDialog.tpl.js"></script>-->
+    <!--<script src="public/selectPeopleDialog.tpl.js"></script>-->
+
+    <!--<script src="public/meetingDialog.js"></script>-->
+    <!--<script src="public/showMeetingDialog.js"></script>-->
+    <!--<script src="public/selectPeopleDialog.js"></script>-->
+    <!--<script src="public/index.js"></script>-->
+</head>
+<body >
+
+<div style="padding: 0 20px">
+    <select id="jc-meetingRoom-selectRoom" style="width: 300px">
+    </select>
+    <input id="jc_meetingRoom_date" style="float: right">
+</div>
+<div>
+    <div class="timeline-wrapper" >
+        <div class="meetingRoom-scrollButton-wrapper">
+            <div class="" style="float: left">
+                <span id="jc-meetingRoom-scrollLeft" class="glyphicon glyphicon-chevron-left " ></span>
+            </div>
+            <div class="" style="float: right">
+                <span id="jc-meetingRoom-scrollRight" class="glyphicon glyphicon-chevron-right " ></span>
+            </div>
+        </div>
+        <div  class="info-wrapper">
+            <div class="time-inner jc_time_scroll">
+                <ol id="jc-timeInfo" class="time-infoList "  >
+                </ol>
+            </div>
+        </div>
+
+        <div  class="time-wrapper" style="position: relative">
+            <div id="jc-timeList-wrapper" class="time-inner jc_time_scroll">
+                <ol id="jc_timeList" class="time_List">
+                </ol>
+            </div>
+
+        </div>
+        <div class="fake-border">
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
