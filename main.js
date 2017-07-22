@@ -52,15 +52,10 @@ $( function () {
     }
 
     function roomOccupied($ol) {
-      //todo 阻塞bug
-      layer.msg({
-        isClose: false,
-        title: '会议室已经被预定，请选择其他时间',
-        execute: function (close) {
-          $ol.children(".ui-selected").removeClass('ui-selected')
-          close();
-        }
-      })
+      layer.alert( '会议室已经被预定，请选择其他时间' ,function ( index ) {
+        $ol.children(".ui-selected").removeClass('ui-selected')
+        layer.close(index);
+      } )
     }
 
     function createMeeting($ol, iframeConfig, selectedArr ) {
@@ -80,7 +75,19 @@ $( function () {
           $firstLi.before($cover)
           selectedArr.push(dataFromChildren)
 
+
           //todo zTree 选择参会人员，确定后选中，取消则取消选区样式
+          layer.open({
+            type: 1,
+            content: $(),
+            yes: function(index, layero){
+              layer.close(index);
+            },
+            cancel: function(index, layero){
+
+              return false;
+            }
+          });
         }
       } else {
         $ol.children(".ui-selected").removeClass('ui-selected')
@@ -99,10 +106,9 @@ $( function () {
 
     function hasRoom( $ol ) {
       if ( $.isEmptyObject( config.room ) ) {
-        layer.msg( '请先选择会议室',{
-          time: 1000,
-        } ,function () {
+        layer.alert( '请先选择会议室',function ( index ) {
           $ol.children(".ui-selected").removeClass('ui-selected')
+          layer.close(index);
         })
         return false
       } else {
@@ -135,7 +141,7 @@ $( function () {
 
 
             //todo layer 弹层显示会议室被预订情况
-            layer.ifreame(iframeConfig)
+
           }
           else if ( moment( $selected.data( config.timeIndex ), config.timeDistribution.timeFormat ).isBefore( new Date() ) ) {
             alert("所选时间已过期")
@@ -143,7 +149,7 @@ $( function () {
             return
             layer.alert('所选时间已过期', function(index){
               $ol.children(".ui-selected").removeClass('ui-selected')
-              // layer.close(index);
+              layer.close(index);
             });
           }
 
