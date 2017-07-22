@@ -1,0 +1,24 @@
+{
+  "name": "meeting_room",
+  "version": "1.0.0",
+  "description": "会议议室预订",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "flatpickr": "^3.0.6",
+    "jquery": "^3.2.1",
+    "jquery-ui": "^1.12.1",
+    "lodash": "^4.17.4",
+    "moment": "^2.18.1",
+    "requirejs": "^2.3.3",
+    "select2": "^4.0.3",
+    "underscore": "^1.8.3",
+    "webpack": "^3.0.0",
+    "ztree": "^3.5.24"
+  }
+}
