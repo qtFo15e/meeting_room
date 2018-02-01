@@ -1,7 +1,4 @@
 $( function () {
-  /**
-   * Created by 迟猛 on 2017/6/29.
-   */
 
   var neSelectableTime = ( function () {
     var config = null
@@ -138,15 +135,9 @@ $( function () {
               height: '500px',
               width: '500px'
             }
-
-
             //todo layer 弹层显示会议室被预订情况
-
-          }
-          else if ( moment( $selected.data( config.timeIndex ), config.timeDistribution.timeFormat ).isBefore( new Date() ) ) {
-            alert("所选时间已过期")
+          } else if ( moment( $selected.data( config.timeIndex ), config.timeDistribution.timeFormat ).isBefore( new Date() ) ) {
             $ol.children(".ui-selected").removeClass('ui-selected')
-            return
             layer.alert('所选时间已过期', function(index){
               $ol.children(".ui-selected").removeClass('ui-selected')
               layer.close(index);
@@ -253,11 +244,10 @@ $( function () {
     return rel
   }
 
-  function renderTimeIndiacator( timeItemIndex ) {
+  function renderTimeIndiacator( ) {
     $( ".timeIndiacator" ).remove()
-    var position = $( "#jc_timeList li:nth-of-type(" + (timeItemIndex ) + " )" ).offset()
-    $( "body" ).append( $( "<span class='timeIndiacator'></span>" ).css( {
-      left: position.left
+    $( "#jc_timeList" ).append( $( "<span class='timeIndiacator'></span>" ).css( {
+      left: moment.duration( moment().unix() - moment().hour(timeDistribution.start).minutes(0).seconds(0).milliseconds(0).unix(), "seconds" ).asHours() * timeInfoItemWidth.substring( 0, timeInfoItemWidth.length - 2 ) + "%"
     } ) )
   }
 
@@ -383,8 +373,7 @@ $( function () {
   }
 
   var resizeHandle = _.debounce( function () {
-    var timeItemIndex = calTimeItemIndex( timeArr, timeDistribution )
-    renderTimeIndiacator( timeItemIndex )
+    renderTimeIndiacator()
   }, 500 )
 
   $( "#jc-meetingRoom-selectRoom" ).change( function () {
@@ -394,9 +383,6 @@ $( function () {
   //todo
   // $( "#jc_meetingRoom_date input" ).attr( "value", moment().format( timeDistribution.dateFormat ))
   $( "#jc_meetingRoom_date " ).attr( "value", moment().format( timeDistribution.dateFormat ))
-
-
-
 
   $("#jc-meetingRoom-selectRoom").on( "select2:change", function ( e ) {
     rerenderSelectedTime()
@@ -439,10 +425,10 @@ $( function () {
 //add indicator of time
 //!!! 需要在时间列表渲染之后调用
   $( "#jc-meetingRoom-scrollLeft" ).click( function () {
-    timeInfoScroll( "left", $( "#jc_timeList li:last-child" ).outerWidth() * ( offsetNumber ) , setTimeIndiacator, this)
+    timeInfoScroll( "left", $( "#jc_timeList li:last-of-type" ).outerWidth() * ( offsetNumber ) , setTimeIndiacator, this)
   } )
   $( "#jc-meetingRoom-scrollRight" ).click( function () {
-    timeInfoScroll( "right",$( "#jc_timeList li:last-child" ).outerWidth() * ( offsetNumber ) ,setTimeIndiacator, this )
+    timeInfoScroll( "right",$( "#jc_timeList li:last-of-type" ).outerWidth() * ( offsetNumber ) ,setTimeIndiacator, this )
   } )
 
   var maxPage = Math.floor( timeArr.length / offsetNumber )
