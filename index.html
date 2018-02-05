@@ -39,14 +39,17 @@
           check: {
             chkboxType: {"Y": "ps", "N": "ps"},
             enable: true
-          }
+          },
+            view: {
+                nameIsHTML: true
+            }
         };
 
 
         // zTree 的数据属性，深入使用请参考 API 文档（zTreeNode 节点数据详解）
         var zNodes = [
           {
-            name: "技术部",
+            name: "<div style='color: red'>dsadsadas</div>",
             id: 0,
             children: [
               {name: "小A", id: 1},
@@ -97,7 +100,7 @@
 </div>
 <div>
     <div class="timeline-wrapper">
-        <div class="meetingRoom-scrollButton-wrapper">
+        <div class="meetingRoom-scrollButton-wrapper" style="padding-right: 25px">
             <div class="" style="float: left">
                 <span id="jc-meetingRoom-scrollLeft" class="glyphicon glyphicon-chevron-left "></span>
             </div>
@@ -120,6 +123,9 @@
 
         </div>
         <div class="fake-border">
+
+        </div>
+        <div class="fake-border" style="right: 0;left: auto">
 
         </div>
     </div>
